@@ -400,7 +400,7 @@ function exportToExcel() {
             [profTitle + " MATERIALLLAR VA JIXOZLAR SMETASI"], // Hardcoded Uzbek
             ["Sana:", currentDate], // Hardcoded Uzbek
             ["Usta:", masterName], // Hardcoded Uzbek
-            ["Mijoz:", clientName], // Hardcoded Uzbek
+            ["Mijoz:", clientName], // Hardcoded Uzbek by eldorcoder
             ["", ""], // Bo'sh qator
             ["UMUMIY JAMI:", grandTotal] // Hardcoded Uzbek, raw number for formatting
         ];
