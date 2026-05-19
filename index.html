@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProSmeta - Qurilish Materiallari Kalkulyatori</title>
+    <meta name="description" content="Ustalar uchun professional smeta shakllantirish tizimi">
+    <!-- Bootstrap CSS vizual dizayn uchun -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SheetJS kutubxonasi Excel eksport uchun -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-controls-wrapper no-print">
+    <button id="themeToggle" class="btn btn-dark">🌙</button>
+</div>
+
+<div class="container main-container">
+    <!-- Ekrandagi Boshqaruv Qismi -->
+    <div class="no-print">
+        <h2 id="mainTitle" class="text-center mb-5 fw-bold">Materiallar Smetasi</h2>
+        
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Yo'nalish:</label>
+                <select id="professionSelector" class="form-select form-select-lg border-primary">
+                    <option value="plumbing">🚰 Santexnika</option>
+                    <option value="carpentry">🪚 Yog'och va Taxta</option>
+                    <option value="bricklaying">🧱 Devor qurish va G'isht terish</option>
+                    <option value="painting">🎨 Malyarka va Pardozlash</option>
+                    <option value="concrete">🏗️ Betonchilik</option>
+                    <option value="plastering">🧱 Suvoqchilik</option>
+                    <option value="electrical">⚡ Elektr montaj</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Usta ismi:</label>
+                <input type="text" id="masterNameInput" class="form-control form-control-lg" placeholder="Ismingizni kiriting...">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Mijoz ismi:</label>
+                <input type="text" id="clientNameInput" class="form-control form-control-lg" placeholder="Mijoz ismi...">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold">Qidiruv:</label>
+                <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="Material nomini yozib qidiring... (Masalan: Quvur)">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold">Bo'lim:</label>
+                <select id="categoryFilter" class="form-select form-select-lg">
+                    <option value="">Barcha bo'limlar</option>
+                </select>
+            </div>
+            <div class="col-md-4 d-flex gap-2 pt-4 align-items-end">
+                <button onclick="window.print()" class="btn btn-success fw-bold px-4 w-100">🖨 PDF</button>
+                <button onclick="exportToExcel()" class="btn btn-primary fw-bold px-4">📊 Excel</button>
+            </div>
+        </div>
+        <div class="row g-3 mb-4 align-items-center bg-light-subtle p-3 rounded border sticky-summary">
+            <div class="col-md-6">
+                <h4 class="text-secondary">JAMI: <span id="liveTotalSum" class="badge bg-primary">0</span></h4>
+            </div>
+            <div class="col-md-6 text-end d-flex justify-content-end align-items-center gap-3">
+                <div class="filter-badge-wrap">
+                    <div class="form-check form-switch mb-0">
+                        <input class="form-check-input" type="checkbox" id="showSelectedOnly">
+                        <label class="form-check-label fw-bold" for="showSelectedOnly">✨ Faqat tanlanganlar</label>
+                    </div>
+                </div>
+                <button onclick="clearAllInputs()" class="btn btn-outline-danger">🧹 Ma'lumotlarni tozalash</button>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <!-- Chop etish vaqtida chiqadigan Sarlavha (Ekranda ko'rinmaydi, faqat PDFda chiqadi) -->
+    <div class="d-none d-print-block text-center mb-4">
+        <h3 id="printHeaderTitle" class="fw-bold text-uppercase">MATERIALLLAR VA JIXOZLAR SMETASI</h3>
+        <p>Sana: <span id="currentDate"></span> | Usta: <span id="displayMasterName"></span> | Mijoz: <span id="displayClientName"></span></p>
+    </div>
+
+    <!-- Materiallar Ro'yxati (Ekranda kiritish uchun) -->
+    <div id="inputSection" class="no-print">
+        <div id="materialsList">
+            <!-- JavaScript orqali JSON ma'lumotlar shu yerga tushadi -->
+            <p class="text-center text-muted">Materiallar yuklanmoqda...</p>
+        </div>
+    </div>
+
+    <!-- Tayyor Smetaning Jadval Ko'rinishi (Faqat chop etilganda/PDF bo'lganda ko'rinadi) -->
+    <div class="d-none d-print-block">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 5%;">№</th>
+                    <th style="width: 50%;">Material nomi</th>
+                    <th style="width: 10%;">Birligi</th>
+                    <th style="width: 10%;">Soni</th>
+                    <th style="width: 12%;">Dona narxi</th>
+                    <th style="width: 13%;">Umumiy summa</th>
+                </tr>
+            </thead>
+            <tbody id="printTableBody">
+                <!-- Faqat soni kiritilgan materiallar shu yerga yig'iladi -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="5" class="text-end">JAMI:</th>
+                    <th id="printTotalSum">0 so'm</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<!-- JavaScript qismi -->
+<script src="script.js"></script>
+</body>
+</html>

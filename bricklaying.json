@@ -1,0 +1,35 @@
+[
+  { "id": 1, "category": "G'ishtlar", "name": "Pishgan g'isht (Yakka) 250x120x65", "unit": "dona" },
+  { "id": 2, "category": "G'ishtlar", "name": "Pishgan g'isht (Poltora) 250x120x88", "unit": "dona" },
+  { "id": 3, "category": "G'ishtlar", "name": "Xom g'isht", "unit": "dona" },
+  { "id": 4, "category": "G'ishtlar", "name": "Dekorativ fasad g'ishti", "unit": "dona" },
+  { "id": 5, "category": "G'ishtlar", "name": "Olovbardosh g'isht (Shaumot)", "unit": "dona" },
+
+  { "id": 10, "category": "Bloklar", "name": "Gazobeton blok 600x300x200", "unit": "dona" },
+  { "id": 11, "category": "Bloklar", "name": "Gazobeton blok 600x300x100 (Peregorodka)", "unit": "dona" },
+  { "id": 12, "category": "Bloklar", "name": "Penobeton blok", "unit": "dona" },
+  { "id": 13, "category": "Bloklar", "name": "Shlakobeton blok (Shlakoblok)", "unit": "dona" },
+  { "id": 14, "category": "Bloklar", "name": "Pishgan g'ishtli blok (Termoblok)", "unit": "dona" },
+
+  { "id": 20, "category": "Qorishmalar va Bog'lovchilar", "name": "Tsement M400 (50kg)", "unit": "qop" },
+  { "id": 21, "category": "Qorishmalar va Bog'lovchilar", "name": "Tsement M500 (50kg)", "unit": "qop" },
+  { "id": 22, "category": "Qorishmalar va Bog'lovchilar", "name": "Qum (Yuvilgan)", "unit": "kub.m" },
+  { "id": 23, "category": "Qorishmalar va Bog'lovchilar", "name": "Ohak (Izvest)", "unit": "kg" },
+  { "id": 24, "category": "Qorishmalar va Bog'lovchilar", "name": "Tayyor g'isht kleyi (Gazobeton uchun)", "unit": "qop" },
+  { "id": 25, "category": "Qorishmalar va Bog'lovchilar", "name": "Plastifikator (Qorishma uchun)", "unit": "litr" },
+
+  { "id": 30, "category": "Armaturalash va Mahkamlash", "name": "G'isht to'ri (Setka) 50x50", "unit": "metr" },
+  { "id": 31, "category": "Armaturalash va Mahkamlash", "name": "Armatura d8", "unit": "metr" },
+  { "id": 32, "category": "Armaturalash va Mahkamlash", "name": "Armatura d10", "unit": "metr" },
+  { "id": 33, "category": "Armaturalash va Mahkamlash", "name": "Sim (Bog'lash uchun)", "unit": "kg" },
+
+  { "id": 40, "category": "Yordamchi materiallar", "name": "Gidroizolyatsiya (Ruberoid)", "unit": "rulon" },
+  { "id": 41, "category": "Yordamchi materiallar", "name": "Butil kauchukli mastika", "unit": "vedro" },
+
+  { "id": 50, "category": "Asboblar", "name": "Keltma (Malka)", "unit": "dona" },
+  { "id": 51, "category": "Asboblar", "name": "G'isht kesuvchi bolg'a (Kirka)", "unit": "dona" },
+  { "id": 52, "category": "Asboblar", "name": "Shnur-prichalka (100m)", "unit": "dona" },
+  { "id": 53, "category": "Asboblar", "name": "Sath o'lchagich (Uroven)", "unit": "dona" },
+  { "id": 54, "category": "Asboblar", "name": "Otves (Shtir)", "unit": "dona" },
+  { "id": 55, "category": "Asboblar", "name": "G'isht arshini (Poryadovka)", "unit": "dona" }
+]

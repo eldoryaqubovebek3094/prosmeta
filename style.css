@@ -1,0 +1,338 @@
+/* Mavzu o'zgaruvchilari */
+:root {
+    --bg-color: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --primary-color: #0d6efd;
+    --primary-gradient: linear-gradient(135deg, #0d6efd 0%, #0043a8 100%);
+    --accent-color: #3b82f6;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --border-color: rgba(226, 232, 240, 0.8);
+    --input-bg: #ffffff;
+    --category-bg: #f1f5f9;
+    --row-hover: rgba(241, 245, 249, 0.7);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 16px;
+}
+
+[data-theme='dark'] {
+    --bg-color: #020617;
+    --card-bg: rgba(15, 23, 42, 0.85);
+    --text-main: #f8fafc;
+    --text-muted: #cbd5e1;
+    --border-color: rgba(51, 65, 85, 0.5);
+    --input-bg: #0f172a;
+    --category-bg: #1e293b;
+    --row-hover: rgba(30, 41, 59, 0.6);
+    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+    transition: var(--transition);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(at 0% 0%, rgba(13, 110, 253, 0.05) 0, transparent 50%), 
+                      radial-gradient(at 50% 0%, rgba(111, 66, 193, 0.05) 0, transparent 50%);
+    min-height: 100vh;
+}
+
+.main-container { 
+    max-width: 1200px; 
+    margin: 40px auto; 
+    background: var(--card-bg); 
+    padding: 40px; 
+    border-radius: var(--radius); 
+    box-shadow: var(--shadow-lg); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+}
+
+h2, h3, h4 {
+    letter-spacing: -0.025em;
+    font-weight: 800;
+}
+
+.category-header { 
+    background-color: var(--category-bg);
+    border-left: 4px solid var(--primary-color);
+    font-weight: bold; 
+    padding: 14px 20px; 
+    border-radius: 8px; 
+    margin-top: 25px; 
+    color: var(--text-main);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: var(--shadow-sm);
+}
+
+.material-row { 
+    padding: 16px 20px; 
+    border-bottom: 1px solid var(--border-color); 
+    display: grid;
+    grid-template-columns: 2fr 120px 150px;
+    gap: 20px;
+    align-items: center;
+    transition: var(--transition); 
+    position: relative;
+}
+
+.material-row.has-value {
+    background-color: rgba(13, 110, 253, 0.05);
+    border-left: 4px solid var(--primary-color);
+}
+
+.material-row:hover { 
+    background-color: var(--row-hover);
+}
+
+.material-row div:first-child {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.form-control, .form-select {
+    background-color: var(--input-bg) !important;
+    color: var(--text-main);
+    border: 2px solid var(--border-color) !important;
+    border-radius: 12px;
+    padding: 12px 18px;
+    transition: var(--transition);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.form-select:hover {
+    border-color: var(--primary-color) !important;
+    box-shadow: var(--shadow-sm);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--input-bg) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15);
+    outline: none;
+}
+
+/* Option elementlarini modernizatsiya qilish */
+select option {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding: 12px;
+    font-size: 1rem;
+}
+
+/* Yo'nalish va Bo'lim tanlagichlari uchun maxsus urg'u */
+#professionSelector, #categoryFilter {
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.01em;
+}
+
+/* "Faqat tanlanganlar" tugmasining yangi dizayni */
+.filter-badge-wrap {
+    background: var(--input-bg);
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    padding-right: 15px;
+    transition: var(--transition);
+}
+
+.filter-badge-wrap:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+/* Agar checkbox tanlangan bo'lsa, butun blokni yoritish */
+.filter-badge-wrap:has(#showSelectedOnly:checked) {
+    border-color: var(--primary-color);
+    background: rgba(13, 110, 253, 0.05);
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.1);
+}
+
+.filter-badge-wrap .form-check-input {
+    width: 42px !important;
+    height: 22px !important;
+    cursor: pointer;
+    background-color: var(--border-color) !important;
+    border: none !important;
+    margin-top: 0.1rem;
+}
+
+.filter-badge-wrap .form-check-input:checked {
+    background-color: var(--primary-color) !important;
+    filter: drop-shadow(0 0 4px rgba(13, 110, 253, 0.4));
+}
+
+.sticky-summary {
+    position: sticky;
+    bottom: 0;
+    z-index: 999;
+    background: var(--card-bg) !important;
+    box-shadow: 0 -10px 20px rgba(0,0,0,0.05);
+    margin-top: 2rem;
+}
+
+.highlight {
+    background-color: rgba(255, 235, 59, 0.4);
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+.qty-input, .price-input { 
+    text-align: center; 
+    font-weight: 600;
+}
+
+.top-controls-wrapper {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 1000;
+}
+
+#themeToggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px 0 rgba(13, 110, 253, 0.39);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.23);
+}
+
+.lang-select {
+    width: 80px !important;
+}
+
+/* Responsivelik (Moslashuvchanlik) */
+@media (max-width: 992px) {
+    .main-container { 
+        margin: 20px; 
+        padding: 25px; 
+    }
+    .material-row {
+        grid-template-columns: 1fr 120px 140px;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container { 
+        padding: 15px; 
+        margin: 0;
+        border-radius: 0;
+        border: none;
+    }
+
+    .material-row {
+        grid-template-columns: 1fr 1fr !important;
+        padding: 20px 15px;
+        gap: 10px;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .material-row > div:first-child {
+        grid-column: span 2;
+        margin-bottom: 5px;
+        font-size: 1.1rem;
+        color: var(--primary-color);
+    }
+    
+    .form-control-lg {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .sticky-summary {
+        position: sticky;
+        bottom: 0;
+        margin: 0 -15px;
+        padding: 15px !important;
+        border-radius: 20px 20px 0 0 !important;
+        border-top: 2px solid var(--primary-color) !important;
+    }
+}
+
+/* Professional Floating Scrollbar dizayni */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 20px;
+    border: 2px solid var(--bg-color); /* Floating effekti uchun */
+    box-shadow: var(--shadow-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+    border: 1px solid var(--bg-color);
+}
+
+/* Firefox uchun (cheklangan qo'llab-quvvatlash) */
+* {
+    scrollbar-color: var(--primary-color) var(--category-bg); /* thumb va track */
+    scrollbar-width: thin; /* auto, thin, none */
+}
+
+/* Faqat chop etish (Print) vaqtida ko'rinadigan maxsus dizayn */
+@media print {
+    body { background: #fff !important; color: #000 !important; }
+    .no-print { display: none !important; }
+    .main-container { 
+        box-shadow: none !important; 
+        padding: 0 !important; 
+        margin: 0 !important; 
+        max-width: 100% !important; 
+        background: #fff !important;
+    }
+    table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        margin-top: 20px; 
+        color: #000 !important;
+    }
+    th, td { border: 1px solid #000 !important; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2 !important; }
+    .badge { color: #000 !important; border: 1px solid #000; }
+}
