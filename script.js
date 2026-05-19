@@ -254,10 +254,10 @@ function exportToExcel() {
     const workbook = XLSX.utils.book_new();
     let grandTotal = 0;
     const selectedByCategory = {};
-
-    // Get current master and client names
-    const masterName = localStorage.getItem(`master_${currentProfession}`) || "";
-    const clientName = localStorage.getItem(`client_${currentProfession}`) || "";
+    
+    // Ma'lumotlarni bevosita inputlardan olish (export vaqtida eng yangi qiymatlarni olish uchun)
+    const masterName = document.getElementById('masterNameInput').value;
+    const clientName = document.getElementById('clientNameInput').value;
     const profTitle = PROFESSIONS[currentProfession].title;
     
     // Sana formatini tozalash (nuqtali qilish) - fayl nomi uchun xavfsiz
@@ -328,9 +328,7 @@ function exportToExcel() {
         // Merge cells for main title, date, master, client
         worksheet["!merges"] = [
             { s: { r: 0, c: 0 }, e: { r: 0, c: 5 } }, // Main Title
-            { s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }, // Date Label
-            { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, // Master Label
-            { s: { r: 3, c: 0 }, e: { r: 3, c: 1 } }, // Client Label
+            // Label va qiymat kataklarini birlashtirishni olib tashladik, shunda ikkalasi ham ko'rinadi
             { s: { r: 5, c: 0 }, e: { r: 5, c: 5 } }  // Category Title
         ];
 
